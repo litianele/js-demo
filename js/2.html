@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+}
+
+</style>
+</head>
+<body>
+<!--
+编写一个javscript函数 fn，该函数有一个参数 n（数字类型），
+其返回值是一个数组，该数组内是 n 个随机且不重复的整数，且整数取值范围是 [2, 32]。
+-->
+<script>
+    //传递一个数据类型和数组，判断数组内是否有前者。
+    function isIncluded(element, array) {
+		var i, len = array.length;
+        for (i = 0; i < len; i++) {
+            if(array[i] == element){
+                return true;
+            }
+        }
+        return false;
+    }
+	console.log(isIncluded(5,[1,4,5]));
+</script>
+</body>
+</html>

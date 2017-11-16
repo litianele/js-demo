@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>vue</title>
+</head>
+<body>
+	<div id="app">
+		<component-a></component-a>
+		<component-b></component-b>
+	</div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/vue/2.2.6/vue.min.js"></script>
+<script>
+var eventBus = new Vue({})
+Vue.component('component-a', {
+	template: '<div><p>the count of foo is {{fooCount}}</p>' +
+                '<button @click="addBar">add bar\'s count</button></div>',
+	data: function() {
+        return {
+            fooCount: 0            
+        }
+    },
+    methods: {
+        addBar: function() {
+            // 触发事件
+            eventBus.$emit('addBar')    
+        }
+    },
+    mounted: function() {
+        eventBus.$on('addFoo', function(num) {
+            this.fooCount +=num
+        }.bind(this)) 
+        // 这里必须将 this 绑定在组件实例上。如果不使用 bind , 也可以使用箭头函数。
+    }
+})
+Vue.component('component-b', {
+	template: '<div><p>the count of bar is {{barCount}}</p>' +
+                '<button @click="addFoo">add foo\'s count</button></div>',
+    data: function() {
+        return {
+            barCount: 0
+        }
+    },
+    methods: {
+        addFoo: function() {
+            // 触发事件，同时传递一个参数
+            eventBus.$emit('addFoo', 2)
+        }
+    },
+    // 在 组件创建的钩子函数中 监听事件
+    mounted: function() {
+        eventBus.$on('addBar', function() {
+            this.barCount++
+        }.bind(this))
+    }
+})
+new Vue({
+	el:"#app"
+})
+
+</script>

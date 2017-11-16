@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>const</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+//const不能再次被赋值。
+function studyEs6(){
+	const a = 5;
+	{
+		a = 3; 
+	}
+	alert(a); //Uncaught TypeError: Assignment to constant variable.
+}
+studyEs6();
+</script>

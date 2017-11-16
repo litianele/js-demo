@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+}
+.box {
+	width: 20px;
+	height: 20px;
+	background: red;
+	color: #fff;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+<script>
+window.onload = function () {
+	var aDiv = document.getElementsByClassName("box"),
+	str = '';
+	for (var i=0; i<30; i++) {
+		str += '<div class="box">'+ i +'</div>';
+	}
+	document.body.innerHTML = str;
+	aDiv[0].style.background = '#000'
+}
+</script>
+</body>
+</html>

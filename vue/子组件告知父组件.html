@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>vue</title>
+</head>
+<body>
+	<div id="app">  
+		<!--父组件可以在使用子组件的地方直接用 v-on 来监听子组件触发的事件。-->
+		<child @parent-event="getChildInfo"></child>
+	</div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/vue/2.2.6/vue.min.js"></script>
+<script>
+Vue.component('child', {
+  template: '<span @click="childClick">{{ message }}</span>',
+  data () {
+	return {
+		message: '子组件'
+	}
+  },
+  methods: {
+	childClick () {
+		//$emit(eventName) 触发事件
+		this.$emit('parent-event',this.message)
+	}
+  }
+})
+new Vue({
+	el:"#app",
+	data: function() {
+		return {
+			
+		}
+	},
+	methods: {
+		getChildInfo (param) {
+			console.log(param)
+		}
+    }
+})
+
+</script>

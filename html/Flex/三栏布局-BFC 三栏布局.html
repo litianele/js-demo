@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <style>
+	*{margin:0; padding:0;}
+	.clearfix:after{ display: block; clear: both; visibility: hidden; height: 0; overflow: hidden; content: "";}
+	.clearfix{ zoom: 1;}
+	.left {
+	    float: left;
+	    height: 200px;
+	    width: 100px;
+	    margin-right: 20px;
+	    background-color: red;
+	}
+	.right {
+	    width: 200px;
+	    height: 200px;
+	    float: right;
+	    margin-left: 20px;
+	    background-color: blue;
+	}	
+	.main {
+	    height: 200px;
+	    overflow: hidden;
+	    background-color: green;
+	}
+    </style>
+</head>
+<body>
+	<!--主要内容模块无法最先加载，当页面中内容较多时会影响用户体验。-->
+    <div class="container clearfix">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="main"></div>
+    </div>
+</body>
+</html>

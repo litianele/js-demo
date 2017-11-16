@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>THIS</title>
+</head>
+<body>
+<button>事件</button>
+</body>
+</html>
+<script>
+const o = {
+	doSomethingLater() {
+		//setTimeout(() => this.speakLeet(), 1000);
+		setTimeout(this.speakLeet.bind(this), 1000);
+	},
+	speakLeet() {
+        console.log(`1337 15 4W350M3`);
+    }	
+}
+o.doSomethingLater();
+
+var button = document.querySelector('button');
+button.addEventListener('click',function(){
+	console.log(this); 
+});
+</script>

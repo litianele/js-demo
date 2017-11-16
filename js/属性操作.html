@@ -1,0 +1,109 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+}
+.img-box {
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	margin-left: -100px;
+	width: 200px;
+	height: 200px;
+	background: #ddd;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+}
+.prev,
+.next {
+	font-size: 15px;
+	color: #f00;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	border: 1px solid #f00;
+	text-align: center;
+	top: 50%;
+	margin-top: -10px;
+	position: absolute;
+}
+.prev {
+	left: 10px;
+}
+.next {
+	right: 10px;
+}
+.text {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	height: 30px;
+	line-height: 30px;
+	color: #fff;
+	text-align: center;
+}
+.last {
+	color: #666;
+	border: 1px solid #666;
+}
+</style>
+</head>
+<body>
+<div class="img-box" id="img-box">
+	<div id="prev" class="prev">></div>
+	<div id="next" class="next">></div>
+	<div id="text" class="text">1/4</div>
+	<img src="" /> 
+</div>
+<script>
+window.onload = function () {
+	var arrImg = ['img/1.png', 'img/2.png', 'img/3.png', 'img/4.png'];
+	var box = document.getElementById("img-box");
+	var img = box.getElementsByTagName("img")[0],
+	text = document.getElementById("text"),
+	prev = document.getElementById("prev"),
+	next = document.getElementById("next");
+	var i = 0;
+	var len = arrImg.length;
+	prev.classList.add("last");
+	changeImg();
+	function changeImg () {
+		text.innerHTML = i+1 + '/'+ len;
+		img.src = arrImg[i];
+	}
+	prev.onclick = function () {
+		next.classList.remove("last");
+		i--;
+		if(i == -1) {
+			i = 0;
+			this.classList.add("last");
+		}
+		changeImg();
+		console.log("prev", i);
+	}
+	next.onclick = function () {
+		prev.classList.remove("last");
+		i++;
+		if (i == len) {
+			this.classList.add("last");
+			i = len-1;
+		}
+		changeImg();
+		console.log("next", i);
+	}
+	
+}
+</script>
+</body>
+</html>

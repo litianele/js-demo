@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>THIS</title>
+</head>
+<body>
+<ul>
+	<li>0</li>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+</ul>
+</body>
+</html>
+<script>
+var nodes = document.querySelectorAll('ul li');
+console.log(nodes);
+for( var i = 0; i < nodes.length; i++) {
+	/*(function(n){
+		nodes[n].addEventListener("click",function(){
+			alert("click:" + n);
+		},false)
+	})(i);*/
+	
+	/*!function(node, index){
+		node.addEventListener('click', function(){
+			alert('click' + index);
+		})
+	}(nodes[i], i);*/
+	[].slice.call(nodes).forEach(function(node, index){
+		node.addEventListener('click', function(){
+			alert('click' + index);
+		})
+	})
+	
+}
+</script>

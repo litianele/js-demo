@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>es</title>
+	<style>
+		*{margin:0; padding:0}
+		#tab div,
+		#tab2 div{
+			width: 200px;
+			height: 200px;
+			background-color: #ddd;
+			color: #fff;
+			display: none;
+		}
+		#tab .active,
+		#tab2 .active{
+			color: #f00;
+		}
+	</style>
+</head>
+<body>
+<div id="tab">
+	<input class="active" type="button" value="vue" />
+	<input type="button" value="react" />
+	<input type="button" value="angular" />
+	<div style="display:block">vue.js</div>
+	<div>react.js</div>
+	<div>angular.js</div>
+</div>
+<div id="tab2">
+	<input class="active" type="button" value="vue" />
+	<input type="button" value="react" />
+	<input type="button" value="angular" />
+	<div style="display:block">vue.js</div>
+	<div>react.js</div>
+	<div>angular.js</div>
+</div>
+</body>
+</html>
+<script>
+window.onload = function () {
+	class Tab{
+		constructor (id) {
+			this.oTab = document.getElementById(id);
+			this.aBtn = this.oTab.getElementsByTagName("input");
+			this.aDiv = this.oTab.getElementsByTagName("div");
+			this.iNow = 0;
+			this.init();
+		}
+		init () {
+			for(let i = 0; i < this.aBtn.length; i++) {
+				this.aBtn[i].onclick = function () {
+					//alert(this); //[object HTMLInputElement],bind this 之后this 变为[object Object]
+					this.iNow = i;
+					this.hide();
+					this.show(i);
+				}.bind(this);
+			}
+		}
+		hide () {
+			for(let i = 0; i < this.aBtn.length; i++) {
+				//alert(this);  //[object Object]
+				this.aBtn[i].className = '';
+				this.aDiv[i].style.display = 'none';
+				//alert(this.aBtn[i]);
+				//alert(this.aDiv[i]);
+			}
+		}
+		show (index) {
+			//alert(this.aBtn[index]); //[object HTMLInputElement]
+			this.aBtn[index].className = 'active';
+			this.aDiv[index].style.display = "block";
+		}
+	}
+	//继承
+	class Tab2 extends Tab{
+		constructor (id) {
+			super(id);
+			setInterval(this.next.bind(this), 1000);
+		}
+		next () {
+			this.iNow++;
+			if(this.iNow == this.aBtn.length){
+				this.iNow = 0;
+			}
+			this.hide();
+			this.show(this.iNow);
+		}
+	}
+	new Tab("tab");
+	let ta = new Tab2("tab2");
+}
+</script>

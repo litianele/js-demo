@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>vue</title>
+</head>
+<body>
+	<div id="app">
+		<hello-world></hello-world>
+	</div>
+	<script type="text/x-template" id="hello-world-template">
+	  <div>
+		<p>Hello hello hello</p>
+	  </div>
+	</script>	
+</body>
+<script src="https://cdn.bootcss.com/vue/2.2.6/vue.min.js"></script>
+<script>
+Vue.component('hello-world', {
+  template: '#hello-world-template'
+})
+new Vue({
+	el: '#app'
+})
+</script>
+</html>
+

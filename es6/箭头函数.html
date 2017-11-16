@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>es6</title>
+	<style>
+		#app{
+			width: 100px;
+			height: 100px; 
+			background: red;
+		}
+	</style>
+</head>
+<body>
+<div id="app">app</div>
+<script>
+
+window.onload = () => {
+	var oDiv = document.getElementById('app');
+	oDiv.onclick = () => {
+		//alert(this); //window
+		oDiv.style.background = '#ddd';
+	}
+	
+}
+</script>
+</body>
+</html>

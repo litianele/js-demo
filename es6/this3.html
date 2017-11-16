@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>THIS</title>
+</head>
+<body>
+<button>事件</button>
+</body>
+</html>
+<script>
+function LeetSpeaker(elem) {
+    return {
+        listenClick() {
+            const self = this;
+            elem.addEventListener('click', function() {
+                self.speakLeet();
+            });
+        },
+        speakLeet() {
+            console.log(`1337 15 4W350M3`);
+        }
+    }
+}
+var button = document.querySelector('button');
+LeetSpeaker(button);
+</script>

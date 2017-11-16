@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>es6</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+<div id="app">app</div>
+<script>
+/*function Person (name, age) {
+	this.name = name;
+	this.age = age;
+}
+Person.prototype.showName = function () {
+	return this.name;
+}
+Person.prototype.showAge = function () {
+	return this.age;
+}
+var p1 = new Person('abc', 16);
+alert(p1.showName());*/
+class Person {
+	constructor (name = 'default', age = 0) {
+		this.name = name;
+		this.age = age;
+	}
+	showName () {
+		return this.name
+	}
+}
+var p1 = new Person();
+alert(p1.showName());
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+}
+.box {
+	width: 20px;
+	height: 20px;
+	background: red;
+	position: absolute;
+	top:0;
+	left:0;
+	color: #fff;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+<script>
+window.onload = function () {
+	var aDiv = document.getElementsByClassName("box");
+	var body = document.body;
+	for (var i=0; i<30; i++) {
+		body.innerHTML += '<div class="box">'+ i +'</div>';
+		if (i<10) {
+			aDiv[i].style.left = 10 + i*30 + 'px';
+			aDiv[i].style.top = 10 + 'px';
+		} else if (i>=10 && i<20) {
+			aDiv[i].style.left = 10 + (i-10)*30 + 'px';
+			aDiv[i].style.top = 40 + 'px';
+		} else if (i>=20 && i<30) {
+			aDiv[i].style.left = 10 + (i-20)*30 + 'px';
+			aDiv[i].style.top = 70 + 'px';
+		}
+	}
+	
+}
+</script>
+</body>
+</html>

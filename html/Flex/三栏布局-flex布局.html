@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <style>
+	*{ margin:0; padding:0;}
+	.container {
+            display: flex;
+	}
+	.main {
+        flex-grow: 1; /*定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。*/
+		flex-shrink: 1; /*定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。*/
+		flex-basis: auto;  /*前三项等价于 flex: 1 1 auto;*/
+	    height: 300px;
+	    background-color: red;
+	}
+	.left {
+	    order: -1;
+	    flex: 0 1 200px;
+	    margin-right: 20px;
+	    height: 300px;
+	    background-color: blue;
+	}
+	.right {
+	    flex: 0 1 100px;
+        margin-left: 20px;
+	    height: 300px;
+	    background-color: green;
+	}
+    </style>
+</head>
+<body>
+    <div class="container">
+		<div class="main"></div>
+		<div class="left"></div>
+		<div class="right"></div>
+    </div>
+</body>
+</html>

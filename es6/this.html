@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>THIS</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+//bind,call,this
+
+var a = {
+	a: 'haha',
+	getA: function () {
+		console.log(this.a);
+	}
+}
+var b = {
+	a: 'hello'
+}
+var getA = a.getA;
+var getA2 = getA.bind(a);
+function run(fn) {
+	fn()
+}
+
+a.getA(); //'haha'
+getA();   
+run(a.getA);
+getA2.call(b);
+</script>

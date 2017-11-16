@@ -1,0 +1,97 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+}
+.img-box {
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	margin-left: -100px;
+	width: 200px;
+	height: 200px;
+	background: #ddd;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+}
+.text {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	height: 30px;
+	line-height: 30px;
+	color: #fff;
+	text-align: center;
+}
+.switch {
+	position: absolute;
+	top: 0;
+	right: -30px;
+}
+.switch li{
+	list-style-type: none;
+	width: 20px;
+	height: 20px;
+	background: #ddd;
+	margin-bottom: 10px;
+}
+.switch li.active {
+	background: red;
+}
+</style>
+</head>
+<body>
+<div class="img-box" id="img-box">
+	<div id="text" class="text">1/4</div>
+	<img src="" />
+	<ul class="switch">
+	</ul>
+</div>
+<script>
+window.onload = function () {
+	var arrImg = ['img/1.png', 'img/2.png', 'img/3.png', 'img/4.png'];
+	var box = document.getElementById("img-box");
+	var img = box.getElementsByTagName("img")[0],
+	text = document.getElementById("text"),
+	oUl = box.getElementsByTagName("ul")[0],
+	oLi = oUl.getElementsByTagName("li");
+	var len = arrImg.length;
+	var num = 0;
+	for (var i = 0; i< len; i++){
+		oUl.innerHTML += '<li></li>'
+	}
+	//初始化
+	fnTab();
+	function fnTab() {
+		//全部清空，当前添加
+		for (var i = 0; i< oLi.length; i++) {
+			oLi[i].className = '';
+		}
+		text.innerHTML = num + 1 + '/'+ len;
+		img.src = arrImg[num];
+		oLi[num].className = 'active';
+	}
+	
+	for (var i = 0; i<oLi.length; i++) {
+		oLi[i].index = i;
+		oLi[i].onclick = function () {
+			//alert(this.index);
+			num = this.index;
+			fnTab();
+		}
+	}
+}
+</script>
+</body>
+</html>

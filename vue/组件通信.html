@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>vue</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+	<div id="app">
+		<component-categories></component-categories>
+		<categorized-components><categorized-components/>
+	</div>
+	<template id="component-categories-template">
+		<div class="component-categories">
+			<ul>
+				<li @click="selectCategory(index)" :class="{active: (index == num)}" v-for="(item, index) in categoriesList" :name="index">{{item}}</li>
+			</ul>
+		</div>
+	</template>
+	<template id="categorized-components-template">
+		<div class="categorized-components">
+			{{msg}}
+		</div>
+	</template>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.2.6/vue.min.js"></script>
+<script>
+var PubSub = new Vue();
+Vue.component('component-categories', {
+  template: '#component-categories-template',
+  data: function () {
+	return {
+		categoriesList: ['基础', '组合', '表单'],
+		num: 0
+	}
+  },
+  methods: {
+	selectCategory: function (index) {
+		this.num = index;
+		PubSub.$emit("SELECT_CATEGORY", index);
+	}
+  }
+})
+
+
+Vue.component('categorized-components', {
+  template: '#categorized-components-template',
+  data: function () {
+	return {
+		msg: 0
+	}
+  },
+  mounted: function () {
+	PubSub.$on("SELECT_CATEGORY", function(msg){
+	  this.msg++
+	}.bind(this))
+  },
+  methods: {
+	
+  }
+})
+new Vue({
+	el: '#app'
+})
+</script>
+</html>
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>vue</title>
+</head>
+<body>
+	<!-- -->
+	<div id="app">
+		<my-component></my-component>
+	</div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/vue/2.2.6/vue.min.js"></script>
+<script>
+var Child = {
+  template: '<div>A custom component!</div>'
+}
+// 创建根实例
+new Vue({
+	el:"#app",
+	components: {
+		// <my-component> 将只在父模板可用
+		'my-component': Child
+	},
+	data: function() {
+		return {
+			
+		}
+	},
+	methods: {
+		
+    }
+})
+
+</script>

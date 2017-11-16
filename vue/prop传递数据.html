@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>vue</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="myMessage" />
+		<child v-bind:message="myMessage"></child>
+	</div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/vue/2.2.6/vue.min.js"></script>
+<script>
+Vue.component('child', {
+  props: ['message'], //父组件是使用 props 传递数据给子组件
+  template: '<span>{{ message }}</span>'
+})
+new Vue({
+	el:"#app",
+	data: function() {
+		return {
+			myMessage: ''
+		}
+	},
+	methods: {
+		
+    }
+})
+
+</script>
