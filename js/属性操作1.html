@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+	margin: 20px;
+}
+input{
+	width: 30px;
+	height: 30px;
+}
+</style>
+</head>
+<body>
+<input type="button" value="0" />
+<input type="button" value="0" />
+<input type="button" value="0" />
+<script>
+window.onload = function () {
+	var aBtn = document.getElementsByTagName("input");
+	var arr = ['A', 'B', 'C', 'D'];
+	for(var i = 0; i< aBtn.length; i++){
+		aBtn[i].index = 0;
+		aBtn[i].onclick = function () {
+			this.value = arr[this.index];
+			this.index++;
+			if(this.index === arr.length) {
+				this.index = 0;
+			}
+		}
+	}
+	
+}
+</script>
+</body>
+</html>
