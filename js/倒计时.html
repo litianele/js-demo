@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Jquery实现单页面多个倒计时</title>
+  <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script language="javascript">
+    $(function () {
+      var nowdate = new Date();
+	  $(".time").each(function(){
+		var downdate = new Date(Date.parse(this.getAttribute('data-time')));;
+		var intDiff = downdate.getTime() - nowdate.getTime();
+		console.log(intDiff);
+		timer(intDiff / 1000, $(this));
+	  })
+    });
+	
+	
+	function timer(intDiff, ele) {
+	  function tick() {
+		var day = 0, hour = 0, minute = 0, second = 0;
+		if (intDiff > 0) {
+		  day = Math.floor(intDiff / (60 * 60 * 24));
+		  hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+		  minute = Math.floor(intDiff / 60) - (day * 24 * 60)
+			- (hour * 60);
+		  second = Math.floor(intDiff) - (day * 24 * 60 * 60)
+			- (hour * 60 * 60) - (minute * 60);
+		}
+		if (minute <= 9)
+		  minute = '0' + minute;
+		if (second <= 9)
+		  second = '0' + second;
+		ele.html('<span class="hour_show">'+ (hour + day * 24) + '</span>' + ':'+ '<span class="minute_show">'+ minute +'</span>' + ':' + '<span class="second_show">' + second + '</span>');  
+		intDiff--;
+	  }
+	  window.setInterval(tick, 1000);
+	  tick();
+	}
+  </script>
+</head>
+
+<body>
+<div class="time" data-time="2017/11/17 12:00:00">1</div>
+<div class="time" data-time="2017/12/17 14:30:00">2</div>
+</body>
+</html>
