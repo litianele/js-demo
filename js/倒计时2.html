@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Jquery实现单页面多个倒计时</title>
+  <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script language="javascript">
+    $(function () {
+      var nowdate = new Date();
+	  $(".time").each(function(){
+		var downdate = new Date(Date.parse(this.getAttribute('data-time')));
+		console.log("downdate", downdate);
+		$(this).html(getEndTime(downdate));
+	  })
+    });
+	
+	function getEndTime (endTime) {
+		var startDate = new Date(); 
+		var endDate = new Date(endTime); 
+		var t = endDate.getTime() - startDate.getTime(); //时间差的毫秒数
+		var d = 0,
+			h = 0,
+			m = 0,
+			s = 0;
+		if (t >= 0) {
+			d = Math.floor(t / 1000 / 3600 / 24);
+			h = Math.floor(t / 1000 / 60 / 60 % 24);
+			m = Math.floor(t / 1000 / 60 % 60);
+			s = Math.floor(t / 1000 % 60);
+		}
+		return "剩余时间:" + d + "天 " + h + "小时 " + m + " 分钟" + s + " 秒";
+	}
+  </script>
+</head>
+
+<body>
+<div class="time" data-time="2018/2/17 12:00:00">1</div>
+<div class="time" data-time="2017/12/17 14:30:00">2</div>
+</body>
+</html>
