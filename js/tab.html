@@ -1,0 +1,50 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+}
+#tab { margin: 20px;}
+.tab-con { display:none; background: #ddd; width:300px; height: 200px;}
+.active{ background:#f00;}
+</style>
+</head>
+<body>
+<script>
+window.onload = function () {
+	var oTab = document.getElementById("tab");
+	var oBtn = oTab.getElementsByTagName("input");
+	var oDiv = oTab.getElementsByClassName("tab-con");
+	oBtn[0].className = 'active';
+	oDiv[0].style.display = 'block';
+	for (var i = 0; i < oBtn.length; i++) {
+		oBtn[i].index = i;
+		oBtn[i].onclick = function () {
+			for (var i = 0; i < oBtn.length; i++) {
+				oBtn[i].className = "";
+				oDiv[i].style.display = 'none';
+			}
+			this.className = 'active';
+			oDiv[this.index].style.display = 'block';
+		}
+	}
+	
+}
+</script>
+<div id="tab">
+	<input type="button" value="angular" />
+	<input type="button" value="react" />
+	<input type="button" value="vue" />
+	<div class="tab-con">angular</div>
+	<div class="tab-con">react</div>
+	<div class="tab-con">vue</div>
+</div>
+</body>
+</html>

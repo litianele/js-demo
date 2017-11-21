@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Jquery实现单页面多个倒计时</title>
+  <style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	li{ list-style-type: none;}
+	.list { width: 200px; margin: 30px;}
+	h2{ border-bottom: 1px solid #333; padding-left: 5px; height: 30px; line-height:30px; background:#ddd; font-size: 14px; color: #333; font-weight: normal;}
+	h2.active { background-color: #f00; color:#fff;}
+	.list ul { padding-left: 10px; display: none;}
+	.list li li{ font-size: 12px; color: #666;}
+	.list li li.active { color:#f00;}
+  </style>
+  <script language="javascript">
+  window.onload = function () {
+	var oUl = document.getElementsByClassName("list")[0];
+	var oH = oUl.getElementsByTagName("h2");
+	var oitem = oUl.getElementsByTagName("ul");
+	var ali = null;
+	var alli = [];
+	for (var i=0; i<oH.length; i++) {
+		oH[i].index = i;
+		oH[i].onclick = function () {
+			//alert(this.index);
+			if(oitem[this.index].style.display === 'block') {
+				oitem[this.index].style.display = 'none';
+				this.className = '';
+			} else {
+				oitem[this.index].style.display = 'block';
+				this.className = 'active';
+			}	 
+		}
+	}
+	for (var i = 0; i< oitem.length; i++) {
+		oli = oitem[i].getElementsByTagName("li");
+		for (var j = 0; j<oli.length; j++) {
+			alli.push(oli[j]);
+		}
+	}
+	for (var i = 0; i<alli.length; i++) {
+		alli[i].onclick = function () {
+			for (var i = 0; i<alli.length; i++) {
+				alli[i].className = '';
+			}
+			this.className = "active";
+		}
+	}
+  }
+  </script>
+</head>
+
+<body>
+<ul class="list">
+	<li>
+		<h2>AngularJS</h2>
+		<ul class="list-item">
+			<li>第一章</li>
+			<li>第二章</li>
+			<li>第三章</li>
+		</ul>
+	</li>
+	<li>
+		<h2>ReactJS</h2>
+		<ul class="list-item">
+			<li>第一章</li>
+			<li>第二章</li>
+			<li>第三章</li>
+		</ul>
+	</li>
+	<li>
+		<h2>VueJS</h2>
+		<ul class="list-item">
+			<li>第一章</li>
+			<li>第二章</li>
+			<li>第三章</li>
+		</ul>
+	</li>
+</ul>
+</body>
+</html>

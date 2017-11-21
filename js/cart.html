@@ -1,0 +1,69 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+}
+span{ width: 30px; height: 30px; line-height: 30px; background: #f00; color: #fff; text-align: center; display: inline-block;}
+input { vertical-align: top; height: 30px; width: 100px;}
+em{ font-style: normal;}
+strong{ font-weight: normal;}
+</style>
+</head>
+<body>
+<script>
+window.onload = function () {
+	var oUl = document.getElementsByTagName("ul")[0]; 
+	var oLi = oUl.getElementsByTagName("li");
+	for(var i = 0; i<oLi.length; i++) {
+		fn(oLi[i]);
+	}
+	function fn (aLi) {
+		var span = aLi.getElementsByTagName("span");
+		var oBtn = aLi.getElementsByTagName("input")[0];
+		var oEm = aLi.getElementsByTagName("em")[0];
+		var oStrong = aLi.getElementsByTagName("strong")[0];
+		var num = oBtn.value;
+		var price = oEm.innerHTML;
+		
+		span[0].onclick = function () {
+			num--;
+			if(num < 0) {
+				num = 0;
+			}
+			oBtn.value = num;
+			oStrong.innerHTML = num*price;
+		}
+		span[1].onclick = function () {
+			num++;
+			oBtn.value = num;
+			oStrong.innerHTML = num*price;
+		}
+	}
+}
+</script>
+<ul>
+	<li>
+		<span>-</span>
+		<input type="text" value="0" />
+		<span>+</span>
+		商品单价：<em>12.5</em>元
+		合计：<strong>0</strong>元
+	</li>
+	<li>
+		<span>-</span>
+		<input type="text" value="0" />
+		<span>+</span>
+		商品单价：<em>10.5</em>元
+		合计：<strong>0</strong>元
+	</li>
+</ul>
+</body>
+</html>
