@@ -11,6 +11,7 @@
 body{
 	position: relative;
 }
+li{ margin-bottom: 10px;}
 span{ width: 30px; height: 30px; line-height: 30px; background: #f00; color: #fff; text-align: center; display: inline-block;}
 input { vertical-align: top; height: 30px; width: 100px;}
 em{ font-style: normal;}
@@ -25,6 +26,9 @@ window.onload = function () {
 	for(var i = 0; i<oLi.length; i++) {
 		fn(oLi[i]);
 	}
+
+	
+	
 	function fn (aLi) {
 		var span = aLi.getElementsByTagName("span");
 		var oBtn = aLi.getElementsByTagName("input")[0];
@@ -64,6 +68,21 @@ window.onload = function () {
 		商品单价：<em>10.5</em>元
 		合计：<strong>0</strong>元
 	</li>
+	<li>
+		<span>-</span>
+		<input type="text" value="0" />
+		<span>+</span>
+		商品单价：<em>6.5</em>元
+		合计：<strong>0</strong>元
+	</li>
+	<li>
+		<span>-</span>
+		<input type="text" value="0" />
+		<span>+</span>
+		商品单价：<em>8.5</em>元
+		合计：<strong>0</strong>元
+	</li>
 </ul>
+<p>总共合计<span>0</span>元</p>
 </body>
 </html>
