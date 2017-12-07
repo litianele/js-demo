@@ -1,0 +1,41 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+}
+
+</style>
+</head>
+<body>
+<script>
+window.onload = function () {
+	var div1 = document.getElementById("div1");
+	var body = document.body;
+	function bindEvent(element, type, fn) {
+		element.addEventListener(type, fn);
+	}
+	bindEvent(div1, 'click', function (e) {
+		var target = e.target;
+		//console.log(target);
+		if (target.nodeName == 'P') {
+			alert(target.innerHTML);
+		}
+	})
+}
+</script>
+<div id="div1">
+	<p id="p1">激活</p>
+	<p id="p2">取消</p>
+	<p id="p3">取消</p>
+	<p id="p4">取消</p>
+</div>
+</body>
+</html>

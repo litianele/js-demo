@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>vue</title>
+	<style>
+		.active{ color: red;}
+	</style>
+</head>
+<body>
+	<div id="app">
+        <ul>
+            <li v-for="(item,index) in tabs" :class="{active:index == num}" @click="tab(index)">{{item}}</li>
+        </ul>
+        <div class="tabCon">
+            <div v-for="(itemCon,index) in tabContents" v-show="index == num">{{itemCon}}</div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/vue/2.2.6/vue.min.js"></script>
+<script>
+new Vue({
+	el:"#app",
+	data: {
+        tabs: ["标题一", "标题二","标题三"],
+        tabContents: ["内容一", "内容二","内容三"],
+        num: 0
+    },
+    methods: {
+        tab(index) {
+            this.num = index;
+        }
+    }
+})
+
+</script>

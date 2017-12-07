@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+}
+</style>
+</head>
+<body>
+<script>
+	alert(fn1(5)); //[1,2,3,4,5]
+	alert(fn1(7)); //[1,2,3,4,5,6,7]
+	function fn1(n) {
+		var arr = [];
+		for (var i = 1; i <= n; i++) {
+			arr.push(i);
+		}
+		return arr;
+	}
+	
+	alert(fn2(2,5));
+	alert(fn2(6,2));
+	function fn2(a,b) {
+		var arr = [];
+		if(a<b){
+			for (var i = a; i <= b-a+2; i++) {
+				arr.push(i);
+			}
+			return arr;
+		} else {
+			for (var i = b; i <= a-b+2; i++) {
+				arr.push(i);
+			}
+			return arr;
+		}
+	}
+	
+</script>
+</body>
+</html>

@@ -6,6 +6,13 @@
   <title>Jquery实现单页面多个倒计时</title>
   <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
   <script language="javascript">
+	/*
+	js中怎么把string类型是日期值转换成date类型的
+	var str = "2010-03-22";　
+	var val = Date.parse(str);
+	var newDate = new Date(val);
+	alert(newDate);
+	*/
     $(function () {
       var nowdate = new Date();
 	  $(".time").each(function(){
