@@ -1,0 +1,41 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+}
+</style>
+</head>
+<body>
+<input type="button" value="换背景" />
+<input type="button" value="暂停" />
+<script>
+window.onload = function () {
+	var btn = document.getElementsByTagName("input");
+	var body = document.body;
+	var imgUrl = ['img/1.png', 'img/2.png', 'img/3.png'];
+	var num = 0;
+	var timer = null;
+	btn[0].onclick = function () {
+		clearInterval(timer);
+		timer = setInterval(function () {
+			body.style.background = 'url('+imgUrl[num]+') no-repeat';
+			num++;
+			num %= imgUrl.length;
+		}, 1000)
+	}
+	btn[1].onclick = function () {
+		clearInterval(timer);
+	}
+	
+}
+</script>
+</body>
+</html>

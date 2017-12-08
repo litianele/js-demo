@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta charset="utf-8">
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<style>
+*{
+	margin: 0;
+	padding:0;
+	box-sizing: border-box;
+}
+.box {
+	position: relative;
+	margin: 100px auto;
+	width: 546px;
+	height: 182px;
+	overflow: hidden;
+}
+.box ul{
+	position: absolute;
+	top:0;
+	left:0;
+}
+.box li{
+	width: 182px;
+	height: 182px;
+	list-style: none;
+	float: left;
+}
+.box li img{
+	width: 182px;
+	height: 182px;
+	vertical-align: center;
+}
+</style>
+</head>
+<body>
+<a href="javascript:;">向左</a>
+<a href="javascript:;">向右</a>
+<div class="box" id="box">
+	<ul>
+		<li><img src="images/01.png"></li>
+		<li><img src="images/02.png"></li>
+		<li><img src="images/03.png"></li>
+	</ul>
+</div>
+<script type="text/javascript">
+window.onload = function () {
+	var oDiv = document.getElementById("box");
+	var oUl = oDiv.getElementsByTagName("ul")[0];
+	var aLi = oUl.getElementsByTagName("li");
+	var spead = 2;
+	var time = null;
+	oUl.innerHTML += oUl.innerHTML;
+	oUl.style.width = aLi.length*aLi[0].offsetWidth + 'px';
+	function move() {
+		if(oUl.offsetLeft < -oUl.offsetWidth/2) {
+			oUl.style.left = 0;
+		}
+		if(oUl.offsetLeft > 0) {
+			oUl.style.left = -oUl.offsetWidth/2 + 'px';
+		}
+		oUl.style.left = oUl.offsetLeft + spead + 'px';
+	}
+	time = setInterval(move,30);
+	oDiv.onmouseover = function () {
+		clearInterval(time);
+	}
+	oDiv.onmouseleave = function () {
+		time = setInterval(move,30);
+	}
+	document.getElementsByTagName("a")[0].onclick = function () {
+		spead = -2;
+	}
+	document.getElementsByTagName("a")[1].onclick = function () {
+		spead = 2;
+	}
+}
+</script>
+</body>
+</html>
