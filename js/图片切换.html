@@ -91,6 +91,19 @@ window.onload = function () {
 			fnTab();
 		}
 	}
+	
+	var timer = null;
+	function autoSlide () {
+		timer = setInterval(function () {
+			num++;
+			num %= arrImg.length;
+			fnTab();
+		}, 1000);
+	}
+	box.onmousemove = function () {
+		clearInterval(timer);
+	}
+	box.onmouseout = autoSlide;
 }
 </script>
 </body>

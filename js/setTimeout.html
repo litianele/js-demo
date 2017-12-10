@@ -1,0 +1,53 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+}
+#content {
+	width: 100px;
+	height: 300px;
+	background: #ddd;
+}
+#title {
+	position: absolute;
+	left: 105px;
+	top: 0;
+	width: 100px;
+	height: 100px;
+	background: #f00;
+}
+</style>
+</head>
+<body>
+<div id="content"></div>
+<div id="title"></div>
+<script>
+window.onload = function () {
+	var content = document.getElementById("content");
+	var title = document.getElementById("title");
+	var timer = null;
+	content.onmouseover = show;
+	content.onmouseout = hide;
+	title.onmouseover = show;
+	title.onmouseout = hide;
+	function show () {
+		clearTimeout(timer);
+		title.style.display = 'block';
+	}
+	function hide () {
+		timer = setTimeout(function () {
+			title.style.display = 'none';
+		}, 300);
+	}
+}
+</script>
+</body>
+</html>
