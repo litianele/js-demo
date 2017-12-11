@@ -38,8 +38,6 @@
 </style>
 </head>
 <body>
-<a href="javascript:;">向左</a>
-<a href="javascript:;">向右</a>
 <div class="box" id="box">
 	<ul>
 		<li><img src="img/01.png"></li>
@@ -52,7 +50,7 @@ window.onload = function () {
 	var oDiv = document.getElementById("box");
 	var oUl = oDiv.getElementsByTagName("ul")[0];
 	var aLi = oUl.getElementsByTagName("li");
-	var spead = 2;
+	var spead = -2;
 	var time = null;
 	oUl.innerHTML += oUl.innerHTML;
 	oUl.style.width = aLi.length*aLi[0].offsetWidth + 'px';
@@ -66,18 +64,6 @@ window.onload = function () {
 		oUl.style.left = oUl.offsetLeft + spead + 'px';
 	}
 	time = setInterval(move,30);
-	oDiv.onmouseover = function () {
-		clearInterval(time);
-	}
-	oDiv.onmouseleave = function () {
-		time = setInterval(move,30);
-	}
-	document.getElementsByTagName("a")[0].onclick = function () {
-		spead = -2;
-	}
-	document.getElementsByTagName("a")[1].onclick = function () {
-		spead = 2;
-	}
 }
 </script>
 </body>

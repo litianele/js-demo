@@ -23,35 +23,27 @@ body{
 </style>
 </head>
 <body>
-<input type="button" id="btn1" value="往前" />
-<input type="button" id="btn2" value="往后" />
-<input type="button" id="btn3" value="往上" />
-<input type="button" id="btn4" value="往下" />
-<div id="div"></div>
 <script>
 window.onload = function () {
-	var oBtn1 = document.getElementById("btn1");
-	var oBtn2 = document.getElementById("btn2");
-	var oBtn3 = document.getElementById("btn3");
-	var oBtn4 = document.getElementById("btn4");
-	var oDiv = document.getElementById("div");
-			
-	oBtn1.onclick = function () {
-		move(oDiv, 'left', 10, 10);
-	};
-	
-	oBtn2.onclick = function () {
-		move(oDiv, 'left', 10, 800, function () {
-			move(oDiv, 'top', 10, 800);
-		});
+	var str = '';
+	var len = 10;
+	var aDiv = document.getElementsByTagName("div");
+	var num = 0;
+	var timer = null;
+	for (var i = 0; i < len; i++) {
+		str += '<div style="width: 50px; height: 50px; background: #f00; position: absolute; top: 600px; left: ' + i*60 +'px;"></div>';
+		document.body.innerHTML = str;
 	}
-	oBtn3.onclick = function () {
-		move(oDiv, 'top', 10, 50);
+	document.onclick = function () {
+		clearInterval(timer);
+		timer = setInterval(function () {
+			move(aDiv[num], 'top', 20, 0);
+			num++;
+			if (num == len) {
+				clearInterval(timer);
+			}
+		}, 200)
 	}
-	oBtn4.onclick = function () {
-		move(oDiv, 'top', 10, 800);
-	}
-	
 	
 	function move (obj, attr, dir, target, callBack) {
 		dir = parseInt(getStyle(obj, attr)) < target ? dir : -dir;
