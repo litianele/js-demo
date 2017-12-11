@@ -35,21 +35,20 @@
 		  second = Math.floor(intDiff) - (day * 24 * 60 * 60)
 			- (hour * 60 * 60) - (minute * 60);
 		}
-		if (minute <= 9)
-		  minute = '0' + minute;
-		if (second <= 9)
-		  second = '0' + second;
-		ele.html('<span class="hour_show">'+ (hour + day * 24) + '</span>' + ':'+ '<span class="minute_show">'+ minute +'</span>' + ':' + '<span class="second_show">' + second + '</span>');  
+		ele.html('<span class="hour_show">'+ toTwo(hour + day * 24) + '</span>' + ':'+ '<span class="minute_show">'+ toTwo(minute) +'</span>' + ':' + '<span class="second_show">' + toTwo(second) + '</span>');  
 		intDiff--;
 	  }
 	  window.setInterval(tick, 1000);
 	  tick();
 	}
+	function toTwo (n) {
+		return n < 10 ?  '0' + n : '' + n
+	}
   </script>
 </head>
 
 <body>
-<div class="time" data-time="2017/11/17 12:00:00">1</div>
+<div class="time" data-time="2017/12/11 23:00:00">1</div>
 <div class="time" data-time="2017/12/17 14:30:00">2</div>
 </body>
 </html>
