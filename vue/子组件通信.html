@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>vue</title>
+</head>
+<body>
+	<div id="app">
+		<aaa></aaa>
+		<bbb></bbb>
+	</div>
+	<template id="child1">
+		<div @click="run">这个是子组件a=={{str}}</div>
+	</template>
+	<template id="child2">
+		<div>这个是子组件b=={{str}}</div>
+	</template>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/vue/2.2.6/vue.min.js"></script>
+<script>
+var Vm = new Vue();
+new Vue({
+	el:"#app",
+	data: function() {
+		return {
+			
+		}
+	},
+	components: {
+		aaa: {
+			data: function () {
+				return {
+					str: 'A数据'
+				}
+			},
+			template: '#child1',
+			methods: {
+				run: function () {
+					Vm.$emit("xxx", this.str);
+				}
+			}
+		},
+		bbb: {
+			data: function () {
+				return {
+					str: ''
+				}
+			},
+			template: '#child2',
+			mounted: function () {
+				var that = this;
+				Vm.$on("xxx", function (data) {
+					console.log(data);
+					that.str = data;
+				})
+			}
+		}
+	},
+	methods: {
+		
+    }
+})
+
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>vue</title>
+</head>
+<body>
+	<div id="app">
+		<p>{{obj.str}}</p>
+		<child v-bind:msg="obj"></child>
+	</div>
+	<template id="child">
+		<span @click="run">这个是子组件===》{{ msg.str}}</span>
+	</template>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/vue/2.2.6/vue.min.js"></script>
+<script>
+new Vue({
+	el:"#app",
+	data: function() {
+		return {
+			obj: {
+				str: '这个是父组件'
+			}
+		}
+	},
+	components: {
+		child: {
+			props: ['msg'], //单向数据流
+			template: '#child',
+			methods: {
+				run: function () {
+					this.msg.str = 123;
+				}
+			}
+		}
+	},
+	methods: {
+		
+    }
+})
+
+</script>
