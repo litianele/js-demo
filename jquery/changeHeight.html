@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.box{ margin: 20px; width: 200px; height: 100px; border: 1px solid #f00;}
+	span { display: inline-block; width: 40px; height: 40px; line-height: 40px; text-align: center; border: 1px solid #ddd;}
+  </style>
+	<script src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<span class="add">+</span>
+<span class="reduce">-</span>
+<div class="box"></div>
+<script>
+$(function () {
+	$(".add").on("click", function () {
+		var $element = $(".box");
+		if (!$element.is(":animated")) {
+			if ($element.height() < 500) {
+				//$element.height($element.height() + 50);
+				$element.animate({
+					height: "+=50"
+				}, 400)
+			}
+		}
+		
+	});
+	$(".reduce").on("click", function () {
+		var $element = $(".box");
+		if (!$element.is(":animated")) {
+			if ($element.height() > 100) {
+				//$element.height($element.height() - 50);
+				$element.animate({
+					height: "-=50"
+				}, 400)
+			}
+		}
+		
+	});
+})
+</script>
+</body>
+</html>

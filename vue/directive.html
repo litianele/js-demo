@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<title>vue</title>
+</head>
+<body>
+	<div id="app">
+		<h1 v-color="blue">111</h1>
+	</div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/vue/2.2.6/vue.min.js"></script>
+<script>
+Vue.directive("color", function (el,binding) {
+	console.log(el);
+	console.log(binding);
+	el.style[binding.name] = binding.expression;
+});
+new Vue({
+	el:"#app",
+	data: function() {
+		return {
+			blue: ''
+		}
+	},
+	methods: {
+		
+    }
+})
+
+</script>
