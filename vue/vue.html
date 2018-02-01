@@ -7,7 +7,9 @@
 </head>
 <body>
 	<div id="app">
-		
+		<input type="text" ref="name" value="" />
+		<input type="passward" ref="psw" value="" />
+		<button @click="login">登录</button>
 	</div>
 </body>
 </html>
@@ -18,20 +20,25 @@ Vue.component('', {
   
   data: function () {
     return {
-		
-	}
+			
+		}
   }
 })
 new Vue({
 	el:"#app",
 	data: function() {
 		return {
-			
+			msg: '123'
 		}
 	},
-	methods: {
+	mounted () {
 		
-    }
+	},
+	methods: {
+		login: function () {
+			console.log(this.$refs.name.value+':'+this.$refs.psw.value);
+		}
+  }
 })
 
 </script>
