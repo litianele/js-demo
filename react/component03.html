@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+  </style>
+	<script src="js/react.development.js"></script>
+	<script src="js/react-dom.development.js"></script>
+	<script src="js/babel.min.js"></script>
+</head>
+
+<body>
+<div id="app"></div>
+<script type="text/babel">
+var users = [
+	'lee', 'ken', 'Amy'
+];
+var datas = [
+	'javascript', 'html', 'css'
+];
+//JSX 允许在模板中插入数组，数组会自动展开所有成员;
+class List extends React.Component {
+	render () {
+		//console.log(this.props);
+		var that = this;
+		return (
+			<ul>
+				{
+					that.props.data.map(function (item, index) {
+						return <li style={{color: that.props.color}} key={index}>{item}</li>
+					})
+				}
+			</ul>
+		)
+	}
+}
+ReactDOM.render(
+<div>
+	<List data= {users} color="red" />
+	<hr />
+	<List data= {users} color="blue" />
+</div>, document.getElementById("app"));
+</script>
+</body>
+</html>

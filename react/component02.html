@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+  </style>
+	<script src="js/react.development.js"></script>
+	<script src="js/react-dom.development.js"></script>
+	<script src="js/babel.min.js"></script>
+</head>
+
+<body>
+<div id="app"></div>
+<script type="text/babel">
+var users = [
+	'lee', 'ken', 'Amy'
+];
+var datas = [
+	'javascript', 'html', 'css'
+];
+function List (props) {
+	/*var props = {
+		color: '',
+		data: []
+	}*/
+	return props.data.map(function (item, index) {
+		return <li style={{color: props.color}} key={index}>{item}</li>
+	});
+}
+ReactDOM.render(
+<div>
+	<ul>
+		<List data= {users} color="red" />
+	</ul>
+	<hr />
+	<ul>
+		<List data= {datas} color="blue" />
+	</ul>
+</div>, document.getElementById("app"));
+</script>
+</body>
+</html>
