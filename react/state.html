@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+
+	.panel {
+		border: 1px solid #000;
+		width: 80%;
+	}
+	.title {
+		margin: 0;
+		padding: 10px;
+		background: #ccc;
+	}
+	p.vip {
+		color: red;
+	}
+	p.message {
+		color: #aaa;
+	}
+  </style>
+	<script src="js/react.development.js"></script>
+	<script src="js/react-dom.development.js"></script>
+	<script src="js/babel.min.js"></script>
+	<script src="js/data.js"></script>
+</head>
+
+<body>
+<div id="app">
+	<!-- <div class="panel">
+		<div>
+			<h2 class="title">好友</h2>
+			<ul>
+				<li>
+					<p>111</p>
+					<p class="message">这家伙很懒</p>
+				</li>
+			</ul>
+		</div>
+	</div> -->
+</div>
+<script type="text/babel">
+class List extends React.Component {
+	render () {
+		return (
+			<ul>
+					{
+						this.props.data.map(function (item, index) {
+							return <li key={index}>
+											<p className={item.vip ? 'vip' : ''}>{item.username}</p>
+											<p className="message">{item.message}</p>
+										</li>
+						})
+					}
+			</ul>
+		)
+	}
+}
+class Group extends React.Component {
+	/*
+		若子类重写了构造函数，一定要手动调用父类的构造函数
+	*/
+	constructor (props) {
+		super(props);
+		this.state = {
+			show: this.props.show
+		};
+	}
+	showList () {
+		if (this.state.show) {
+			return <List data={dataList.friends.list} />
+		} else {
+			return '';
+		}
+		
+	}
+	clickHander (e) {
+		console.log(this.props.show);
+		/* 原生事件函数this指向触发该事件的对象，
+			在reactz事件函数中this指向undefined
+			若需要操作发生该事件的元素，可以通过事件对象的属性来访问该元素。
+			props 由外部提供传入，只读的
+			state 组件内部私有数据,可在组件内根据需要进行改变。
+			state初始化需要在类的构造函数中进行。
+			*/
+		console.log(e.target);	
+		this.setState({
+			show: !this.state.show
+		});
+	}
+	render () {
+		return (
+			<div>
+				<h2 className="title" onClick={this.clickHander.bind(this)}>{this.props.name}</h2>
+				{this.showList()}
+			</div>
+		)
+	}
+}
+class Panel extends React.Component {
+	render () {
+		return (
+			<div className="panel">
+				<Group name={dataList.friends.name} show={true}></Group>
+				<Group name={dataList.families.name} show={false}></Group>
+			</div>
+		
+		)
+	}
+}
+
+ReactDOM.render(
+	<div>
+		<Panel>
+			<Group></Group>
+		</Panel>
+	</div>, document.getElementById("app"));
+</script>
+</body>
+</html>
