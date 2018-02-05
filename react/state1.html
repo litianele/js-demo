@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+	.active { color: #f00;}
+  </style>
+	<script src="js/react.development.js"></script>
+	<script src="js/react-dom.development.js"></script>
+	<script src="js/babel.min.js"></script>
+</head>
+
+<body>
+<div id="app"></div>
+<script type="text/babel">
+class List extends React.Component {
+	constructor (...args) {
+		super(...args);
+		this.state = {
+			show: this.props.show,
+			active: this.props.active
+		}
+		this.changeShow = this.changeShow.bind(this);
+	}
+	changeShow () {
+		this.setState({
+			show: !this.state.show,
+			active: !this.state.active
+		})
+	}
+	render () {
+		return (
+			<div>
+				<h2 onClick={this.changeShow} className={this.state.active ? 'active' : 'none'} >标题</h2>
+				<ul style={{display: this.state.show ? 'block' : 'none'}}>
+					<li>1111</li>
+					<li>1111</li>
+				</ul>
+			</div>
+		)
+	}
+}
+class App extends React.Component {
+	render () {
+		return (
+			<div>
+				<List show={true} active={true} />
+				<List show={false} active={false} />
+			</div>
+		)
+	}
+}
+
+ReactDOM.render(
+	<App />, document.getElementById("app")
+);
+</script>
+</body>
+</html>
