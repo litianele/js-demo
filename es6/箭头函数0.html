@@ -11,21 +11,18 @@
 <body>
 <div id="app">app</div>
 <script>
-//单体模式
-var name = 'abc';
-var age = 16;
-var person = {
-	name,
-	age,
-	showName: () => {
-		alert(this.name);
-	},
-	showAge: () => {
-		alert(this.age);
-	}
+//在箭头函数里
+function foo() {
+  setTimeout(() => {
+		console.log(this);
+    console.log('id:', this.id);
+  }, 100);
 }
-person.showName(); //'abc'
-person.showAge(); //16
+
+var id = 21;
+
+foo.call({ id: 42 });
+
 </script>
 </body>
 </html>

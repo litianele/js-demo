@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+	.active { color: #f00;}
+  </style>
+	<script src="js/react.development.js"></script>
+	<script src="js/react-dom.development.js"></script>
+	<script src="js/babel.min.js"></script>
+</head>
+
+<body>
+<div id="app"></div>
+<script type="text/babel">
+class Group extends React.Component {
+	changeShow () {
+		//console.log(this.props.index);
+		this.props.toggle(this.props.index);
+	}
+	render () {
+		return (
+			<div>
+				<h3 onClick={this.changeShow.bind(this)}>{this.props.title}</h3>
+				<ul style={{display: this.props.show ? 'block' : 'none'}}>
+					{
+						this.props.data.map(function (item,index) {
+							return <li key={index}>{item}</li>
+						})
+					}
+				</ul>
+			</div>
+		)
+	}
+}
+class App extends React.Component {
+	constructor () {
+		super();
+		this.toggleList = this.toggleList.bind(this);
+		this.state = {
+			status: [false,true]
+		}
+	}
+	toggleList (i) {
+		console.log(i);
+		let status = this.state.status.map((item, index) => {
+			if (index === i) {
+				return !item;
+			} else {
+				return false;
+			}
+		})
+		console.log(status);
+		this.setState({
+			status: status
+		}) 
+	}
+	render () {
+		return (
+			<div>
+				<Group toggle={this.toggleList} show={this.state.status[0]} index={0} data={['html','css','js']} title={'前端'} />
+				<Group toggle={this.toggleList} show={this.state.status[1]} index={1} data={['php','java','C++']} title={'后端'} />
+			</div>
+		)
+	}
+}
+
+ReactDOM.render(
+	<App />, document.getElementById("app")
+);
+</script>
+</body>
+</html>
