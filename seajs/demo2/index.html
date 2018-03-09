@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sea</title>
+</head>
+<body>
+    
+    <h1 id="hiht">hiht</h1>
+    <p>
+        <input type="button" name="" value="red" id="red">
+        <input type="button" name="" value="blue" id="blue">
+    </p>
+
+    <!-- 导入sea.js -->
+    <script src="https://cdn.bootcss.com/seajs/3.0.2/sea.js"></script>
+    <script type="text/javascript">
+        //使用主模块
+        seajs.use("./seaMainmodule.js",function(){
+            document.getElementById("hiht").innerHTML = "use main";
+        });
+    </script>
+
+</body>
+</html>
